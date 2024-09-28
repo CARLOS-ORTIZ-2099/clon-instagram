@@ -49,8 +49,8 @@ export const useShowPublications = () => {
     //console.log("entro");
     try {
       const response = await getPublications(publications.length);
-      //console.log(response);
-      if (response.data.publications.length === 0) {
+      console.log(response);
+      if (response.data?.publications?.length === 0) {
         setHasMore(false);
       } else {
         setTimeout(() => {

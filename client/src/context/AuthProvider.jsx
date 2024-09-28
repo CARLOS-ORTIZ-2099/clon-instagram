@@ -44,10 +44,12 @@ export const AuthProvider = ({ children }) => {
   const registerHandler = async (fields) => {
     try {
       const response = await registerUser(fields);
+      console.log(response);
       if (response.statusText === "OK") {
         navigate("/login");
       }
     } catch (error) {
+      console.log(error);
       setErrors(error.response.data);
     }
   };
