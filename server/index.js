@@ -14,7 +14,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
-
 // executing db
 connectionToDb().catch((err) => console.log(err));
 
@@ -22,7 +21,7 @@ const app = express();
 
 // middlewares that executing functionalities general
 
-app.use(cors({ credentials: true }));
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

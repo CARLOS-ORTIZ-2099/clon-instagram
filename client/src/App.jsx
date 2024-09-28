@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Register } from "./pages/register/Register";
+import { Login } from "./pages/login/Login";
+import { Home } from "./pages/home/Home";
+import { ProtectedRoutes } from "./components/protected-routes/ProtectedRoutes";
+import { Profile } from "./pages/profile/Profile";
+import { NotFound } from "./pages/NotFound";
+import { PublicRoutes } from "./components/public-routes/PublicRoutes";
+import { AuthProvider } from "./context/AuthProvider";
+import { Publication } from "./pages/publication/Publication";
+import { Explore } from "./pages/explore/Explore";
+import { EditProfile } from "./pages/edit-profile/EditProfile";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
+            <Route element={<PublicRoutes />}>
+              <Route path="/" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+            </Route>
+
+            {/* esta tiene que ser una ruta protegida */}
+
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/home" element={<Home />} />
+
+              <Route path="/profile/:username" element={<Profile />} />
+
+              <Route path="/p/:idpublication" element={<Publication />} />
+
+              <Route path="/explore" element={<Explore />} />
+            </Route>
+            <Route path="/edit-profile/:id" element={<EditProfile />} />
+
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
