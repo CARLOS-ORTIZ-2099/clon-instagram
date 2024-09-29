@@ -43,7 +43,8 @@ app.use(notFound);
 app.use((err, req, res, next) => {
   // campo duplicado validado por mongo db
   if (err.code == "11000") {
-    res.status(500).send({ message: "correo no valido intenta con otro" });
+    const keyData = Object.keys(err.keyValue)[0];
+    res.status(500).send({ [keyData]: `${keyData} no valido` });
   }
   // errores personalizados mios
   else if (err instanceof MyError) {
