@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
+console.log(`${process.env.SECRETWORD} del create token`);
 
 export const createToken = (id) => {
   const token = jwt.sign({ id: id }, process.env.SECRETWORD, {

@@ -9,6 +9,7 @@ import { processImageAvatar } from "../libs/processImage.js";
 import { deleteOneImageCloud, uploadStream } from "../libs/cloudinary.js";
 import dotenv from "dotenv";
 dotenv.config();
+console.log(`${process.env.SECRETWORD} del authcontroler`);
 
 export const register = async (req, res, next) => {
   try {
@@ -24,7 +25,7 @@ export const register = async (req, res, next) => {
 export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-
+    console.log(email, password);
     let user = new User();
 
     if (user.validateEmail(email)) {
@@ -87,7 +88,7 @@ export const logout = async (req, res, next) => {
 export const verifyToken = async (req, res, next) => {
   try {
     const { _token } = req.cookies;
-    console.log(_token);
+    console.log(`${req.cookies} del verify controlador`);
     if (!_token) {
       return next(new MyError("no hay token", "not have you token", 401));
     }
