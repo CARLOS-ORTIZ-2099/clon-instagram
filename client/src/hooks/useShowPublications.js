@@ -50,7 +50,7 @@ export const useShowPublications = () => {
     try {
       const response = await getPublications(publications.length);
       console.log(response);
-      if (response.data?.publications?.length === 0) {
+      if (response.data.publications.length === 0) {
         setHasMore(false);
       } else {
         setTimeout(() => {

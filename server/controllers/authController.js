@@ -70,7 +70,7 @@ export const login = async (req, res, next) => {
       .cookie("_token", token, {
         httpOnly: false,
         secure: true,
-        sameSite: "Lax",
+        sameSite: "lax",
         path: "/",
         maxAge: 3000 * 60 * 60,
       })
@@ -87,6 +87,7 @@ export const logout = async (req, res, next) => {
 export const verifyToken = async (req, res, next) => {
   try {
     const { _token } = req.cookies;
+    console.log(_token);
     if (!_token) {
       return next(new MyError("no hay token", "not have you token", 401));
     }
