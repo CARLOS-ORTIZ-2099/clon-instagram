@@ -63,15 +63,15 @@ export const login = async (req, res, next) => {
     }
     // este token que creemos servira para la autenticacion
     const token = createToken(userexist._id);
-
+    console.log(`${token} de controlador auth`);
     // guardamos el token en las cookies, para su posterior acceso como autenticacion
     const userToSend = { ...userexist._doc };
     delete userToSend.password;
     res
       .cookie("_token", token, {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax",
+        secure: true,
+        sameSite: "None",
         path: "/",
         maxAge: 3000 * 60 * 60,
       })
