@@ -69,7 +69,7 @@ export const login = async (req, res, next) => {
     delete userToSend.password;
     res
       .cookie("_token", token, {
-        httpOnly: true,
+        httpOnly: false,
         secure: true,
         sameSite: "None",
         path: "/",

@@ -6,7 +6,7 @@ import { PublicationImage } from "../../components/publication-image/Publication
 import { Loading } from "../../components/Loading";
 
 export const Explore = () => {
-  const [publicationsRandom, setPublicationsRandom] = useState([]);
+  const [publicationsRandom, setPublicationsRandom] = useState(null);
 
   useEffect(() => {
     getPublicationsHandler();
@@ -20,7 +20,7 @@ export const Explore = () => {
     setPublicationsRandom(publications);
   };
 
-  if (publicationsRandom.length < 1) return <Loading />;
+  if (!publicationsRandom) return <Loading />;
 
   return (
     <Box mt={"30px"} textAlign={"center"}>
@@ -30,7 +30,10 @@ export const Explore = () => {
             <PublicationImage key={publication._id} publication={publication} />
           ))
         ) : (
-          <Text> no hay nada para mostrar </Text>
+          <Text fontSize={"xl"} color={"#4cb5f9"}>
+            {" "}
+            no hay nada para mostrar{" "}
+          </Text>
         )}
       </ImagesContainer>
     </Box>
