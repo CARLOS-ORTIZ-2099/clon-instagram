@@ -69,8 +69,8 @@ export const login = async (req, res, next) => {
     delete userToSend.password;
     res
       .cookie("_token", token, {
-        httpOnly: false,
-        secure: true,
+        httpOnly: true,
+        secure: false,
         sameSite: "lax",
         path: "/",
         maxAge: 3000 * 60 * 60,

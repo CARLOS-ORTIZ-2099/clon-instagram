@@ -4,7 +4,7 @@ dotenv.config();
 
 export const validateAuth = async (req, res, next) => {
   const { _token } = req.cookies;
-  console.log(`${req.cookies} del validate middleware`);
+  console.log(`${JSON.stringify(req.cookies)} del validate middleware`);
   if (!_token) {
     return res.send({ msg: "logueate antes" });
   }
