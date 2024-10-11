@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //app.use("/uploads", express.static(findRoutes("uploads")));
 
-// routes
+//  routes
 app.use("/api/auth", authRoutes);
 app.use("/api/publication", publicationRoutes);
 app.use("/api/comment", commentRoutes);
