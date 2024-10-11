@@ -7,3 +7,4 @@ export const instance = axios.create({
   withCredentials: true,
 });
 //http://localhost:5000/api
+// https://clon-instagram.onrender.com/api
