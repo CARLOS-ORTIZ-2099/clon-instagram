@@ -80,6 +80,7 @@ export const AuthProvider = ({ children }) => {
     setLoadingRegister(true);
     try {
       const response = await registerUser(fields);
+      console.log(response);
       if (response.statusText === "OK") {
         toast({
           title: "Cuenta Creada",
