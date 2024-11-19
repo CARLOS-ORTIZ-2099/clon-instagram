@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await registerUser(fields);
       console.log(response);
-      if (response.statusText === "OK") {
+      if (response.statusText === "OK" || response.status === 200) {
         toast({
           title: "Cuenta Creada",
           description: "cuenta creada satisfactoriamente",
@@ -114,6 +114,7 @@ export const AuthProvider = ({ children }) => {
   const logoutHandler = async () => {
     try {
       const response = await logoutUser();
+      console.log(response);
       if (response.statusText === "OK") {
         setUser(false);
         setIsAunthenticated(false);

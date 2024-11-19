@@ -11,6 +11,7 @@ export const usePublication = (
 ) => {
   const { user } = useAuth();
   const [publication, setPublication] = useState(null);
+  const toast = useToast();
   useEffect(() => {
     getPublicationHandler(idpublication);
   }, []);
@@ -108,7 +109,13 @@ export const usePublication = (
         content: body.content,
         file: body.file,
       }));
-      alert("se edito correctamente");
+      toast({
+        title: "Publicacion modificada",
+        description: "se actualizo la publicacion correctamente",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
       onClosePublication();
     } catch (error) {
       change();
