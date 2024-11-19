@@ -1,6 +1,7 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import path from "node:path";
 
 // importacion conexion a db
 import { connectionToDb } from "./database/connectionToDb.js";
