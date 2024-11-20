@@ -115,7 +115,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await logoutUser();
       console.log(response);
-      if (response.statusText === "OK") {
+      if (response.statusText === "OK" || response.status === 200) {
         setUser(false);
         setIsAunthenticated(false);
       }
