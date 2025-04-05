@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from "react-router-dom";
 import { useFormFields } from "../../hooks/useFormFields";
 import { useAuth } from "../../context/AuthProvider";
@@ -112,7 +111,7 @@ export const Register = () => {
                 h={"38px"}
                 onChange={handlerChange}
                 name="password"
-                type="text"
+                type="password"
                 placeholder="password"
               />
               {errorsRegister?.password && (

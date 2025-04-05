@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useAuth } from "../../context/AuthProvider";
 import { Link } from "react-router-dom";
 import { useFormFields } from "../../hooks/useFormFields";
@@ -81,7 +80,7 @@ export const Login = () => {
                 h={"38px"}
                 onChange={handlerChange}
                 name="password"
-                type="text"
+                type="password"
                 placeholder="password"
               />
               <Button
